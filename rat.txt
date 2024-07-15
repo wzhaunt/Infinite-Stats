@@ -1,0 +1,774 @@
+}
+for i,v in pairs(slots) do 
+    if game.Players.LocalPlayer.Name:find(i) then 
+        for b,n in ipairs(v) do
+            if b == 1 then 
+            getgenv().SlotNamek = "Slot" .. n
+            elseif b == 2 then 
+            getgenv().SlotPoint = "Slot" .. n
+            end
+            end
+        end
+    
+    end
+
+local Run = false
+local Time
+local Stopped = false
+
+--[[ Defining Functions ]]--
+local Waitfordesired = function(slot)
+    local Gum = os.clock()
+    local nityy = true
+    while nityy == true do wait()
+        local delta = os.clock() - Gum
+        if delta > 1 then 
+            break
+            end
+        pcall(function()
+            if game.Players.LocalPlayer.PlayerGui.HUD.Bottom.ChatGui.TextLabel.Text == slot then 
+                nityy = false
+                end
+            end)
+        end
+    end
+local Checkslot = function()
+if game.Players.LocalPlayer.Character:FindFirstChild("Head") then 
+    if game.Players.LocalPlayer.Character:FindFirstChild("Head").BrickColor == BrickColor.new("Sea green") then 
+        return "Namek"
+        else
+            return "PointSlot"
+        end
+    end
+end    
+local Changeslot = function(slot)
+local WaitingForSlotChange = Checkslot()
+local args = {
+    [1] = workspace.FriendlyNPCs:FindFirstChild("Character Slot Changer")
+}
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(unpack(args))
+wait(0.4)
+local args = {
+    [1] = {
+        [1] = "Yes"
+    }
+}
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer(unpack(args))
+wait(0.4)
+local args = {
+    [1] = {
+        [1] = "k"
+    }
+}
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer(unpack(args))
+wait(0.4)
+local args = {
+    [1] = {
+        [1] = slot
+    }
+}
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer(unpack(args))
+coroutine.wrap(function()
+if WaitingForSlotChange == "Namek" then
+while WaitingForSlotChange == "Namek" do
+print("Changing")
+if Checkslot() == "PointSlot" then 
+WaitingForSlotChange = "True"
+end
+wait()
+
+end
+elseif WaitingForSlotChange == "PointSlot" then
+while WaitingForSlotChange == "PointSlot" do
+print("Changing")
+
+if Checkslot() == "Namek" then 
+WaitingForSlotChange = "True"
+end
+wait()
+
+end
+end
+end)()
+coroutine.wrap(function()
+wait(20)
+if WaitingForSlotChange ~= "True" then 
+game:Shutdown()
+end
+
+
+end)()
+end
+local Changeslot2 = function(slot)
+local WaitingForSlotChange = Checkslot()
+local args = {
+    [1] = workspace.FriendlyNPCs:FindFirstChild("Character Slot Changer")
+}
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(unpack(args))
+wait(0.75)
+local args = {
+    [1] = {
+        [1] = "Yes"
+    }
+}
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer(unpack(args))
+wait(0.75)
+local args = {
+    [1] = {
+        [1] = "k"
+    }
+}
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer(unpack(args))
+wait(0.75)
+local args = {
+    [1] = {
+        [1] = slot
+    }
+}
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer(unpack(args))
+coroutine.wrap(function()
+if WaitingForSlotChange == "Namek" then
+while WaitingForSlotChange == "Namek" do
+print("Changing")
+if Checkslot() == "PointSlot" then 
+WaitingForSlotChange = "True"
+end
+wait()
+
+end
+elseif WaitingForSlotChange == "PointSlot" then
+while WaitingForSlotChange == "PointSlot" do
+print("Changing")
+
+if Checkslot() == "Namek" then 
+WaitingForSlotChange = "True"
+end
+wait()
+
+end
+end
+end)()
+coroutine.wrap(function()
+wait(20)
+if WaitingForSlotChange ~= "True" then 
+game:Shutdown()
+end
+
+
+end)()
+end
+local Resetslot = function()
+game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(workspace.FriendlyNPCs["Start New Game [Redo Character]"]);
+wait(0.4)
+game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"});
+wait(0.4)
+game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"k"});
+wait(0.4)
+game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"Yes"});
+wait(1)
+game.TeleportService:Teleport(552500546)                
+end
+
+local IsKami = function()
+ if game.Workspace.FriendlyNPCs:FindFirstChild("KAMI") then 
+     return true
+     end
+end
+local WaitForRequestedAsset = function(asset,parent)
+local go = true
+coroutine.wrap(function()
+wait(20)
+if go == true then 
+game:Shutdown()
+wait(1)
+game:Shutdown()
+end
+
+
+end)()
+while go do wait()
+    pcall(function()
+        if parent:FindFirstChild(asset) then 
+        go = false
+        end
+        end)
+    
+    end
+end    
+local Waitforchar = function()
+    local folder = Instance.new("Folder")
+    folder.Name = "CheckRespawn"
+    folder.Parent = game.Players.LocalPlayer.Character
+    local Checking = true
+    
+    while Checking do wait()
+        pcall(function()
+            if game.Players.LocalPlayer.Character:FindFirstChild("CheckRespawn") then 
+                Checking = false
+            end
+            end)
+    end
+         
+    local loading = true
+    coroutine.wrap(function()
+    wait(20)
+    if loading == true then 
+    game:Shutdown()
+    end
+    end)()
+    while loading == true  do wait()
+    pcall(function()
+    if not game.Players.LocalPlayer.Character:FindFirstChild("PowerOutput") then 
+    elseif game.Players.LocalPlayer.Character:FindFirstChild("PowerOutput") then
+        loading = false
+        end
+    end)
+    
+
+end
+    
+end    
+local Load = function()
+local loading = true
+    coroutine.wrap(function()
+    wait(20)
+    if loading == true then 
+        game:Shutdown()
+        wait(1)
+        game:Shutdown()
+    elseif loading == false then 
+        print("did load")
+        print(loading)
+    end
+
+    end)()
+    while loading == true  do wait()
+    pcall(function()
+    if not game.Players.LocalPlayer.Character:FindFirstChild("PowerOutput") then 
+    elseif game.Players.LocalPlayer.Character:FindFirstChild("PowerOutput") then
+        loading = false
+        end
+    end) 
+    end
+end
+local GetLvl = function()
+Load()
+WaitForRequestedAsset("Val",game.Players.LocalPlayer.PlayerGui.HUD.Bottom.Stats.LVL)    
+return tonumber(game.Players.LocalPlayer.PlayerGui.HUD.Bottom.Stats.LVL.Val.Text)    
+    
+end
+local Kami = function()
+pcall(function()
+if game.Players.LocalPlayer.PlayerGui.HUD.Bottom.ChatGui.TextLabel.Visible == true then
+if workspace.FriendlyNPCs:FindFirstChild("KAMI") then 
+game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(workspace.FriendlyNPCs['KAMI'].Chat)
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"k"})
+
+end
+if game:GetService("ReplicatedStorage").Hidden:FindFirstChild("KAMI") then 
+game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(game:GetService("ReplicatedStorage").Hidden.KAMI.Chat)
+
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"k"})
+
+
+    
+end
+end
+end)
+end
+local PerformExploit = function()
+Time = os.clock()
+Run = true
+end
+local Hackker = function()
+    
+Time = os.clock()
+while true do     
+    Dleta = os.clock() - Time
+    if Dleta > 1 then 
+        break
+    end
+    pcall(function()
+        if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Booster") then 
+            Kami()
+            print("Kami")
+            end
+        end)
+    
+    wait()
+    end
+end
+local GetLvl50 = function()
+local joinedbefore = true
+
+
+
+
+
+local run = game:GetService("RunService")
+local lastchat 
+local sequence 
+local sequencestepped
+local maxsequence 
+local runningg = false
+local skipped = false
+run.Stepped:Connect(function()
+    
+    if runningg == true then 
+    if lastchat == game.Players.LocalPlayer.PlayerGui.HUD.Bottom.ChatGui.TextLabel.Text and sequencestepped == 1 then 
+        game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(workspace.FriendlyNPCs[sequence[sequencestepped]])
+        print(maxsequence,sequencestepped,runningg)
+        lastchat = game.Players.LocalPlayer.PlayerGui.HUD.Bottom.ChatGui.TextLabel.Text
+    elseif lastchat == game.Players.LocalPlayer.PlayerGui.HUD.Bottom.ChatGui.TextLabel.Text and sequencestepped > 1 then 
+        game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({sequence[sequencestepped]})
+        print(maxsequence,sequencestepped,runningg,"2")
+                
+         lastchat = game.Players.LocalPlayer.PlayerGui.HUD.Bottom.ChatGui.TextLabel.Text
+         if maxsequence <= sequencestepped then 
+        if game.Players.LocalPlayer.PlayerGui.HUD.Bottom.ChatGui.Visible == false then
+        runningg = false
+        print("Falsed")
+        end
+        end 
+    elseif lastchat ~= game.Players.LocalPlayer.PlayerGui.HUD.Bottom.ChatGui.TextLabel.Text then
+        if sequencestepped == 1 and workspace.FriendlyNPCs[sequence[1]].Chat:FindFirstChild("Chat") then
+        
+            if game.Players.LocalPlayer.PlayerGui.HUD.Bottom.ChatGui.TextLabel.Text ~= workspace.FriendlyNPCs[sequence[1]].Chat.Chat.Value then 
+                runningg = false
+                skipped = true 
+                print("Did quest, Skipping")
+                end
+            end
+        if maxsequence <= sequencestepped then 
+        runningg = false
+        print("Falsed")
+        end
+        sequencestepped = sequencestepped + 1
+        print("Incremented")
+        lastchat = game.Players.LocalPlayer.PlayerGui.HUD.Bottom.ChatGui.TextLabel.Text
+        end
+    
+    end
+end)
+function chat(seq,maxseq)
+ lastchat = game.Players.LocalPlayer.PlayerGui.HUD.Bottom.ChatGui.TextLabel.Text
+ sequence = seq
+ sequencestepped = 1
+ maxsequence = maxseq
+ runningg = true    
+while task.wait() do 
+    if runningg == false then
+        break
+    end
+end
+
+
+end
+
+
+
+
+      
+
+      
+
+
+
+    local lplr = game:GetService('Players').LocalPlayer
+    for i,v in pairs(workspace.FriendlyNPCs:GetDescendants()) do
+        if v.Name == 'Chat' and v.ClassName ~= 'Folder' then
+            if v.Value == "I heard there's a spaceship in Yunzabit Heights" then
+                v.Parent.Parent.Name = 'Quest_1'
+            elseif v.Value == "We need your help in the future!" then
+                v.Parent.Parent.Name = 'Quest_2'
+            elseif v.Value == "Hey want to explore the galaxy?" then
+                v.Parent.Parent.Name = 'Quest_3'
+            elseif v.Value == "Whatup" then
+                v.Parent.Parent.Name = 'Quest_4'
+            elseif v.Value == "YOU THINK YOU CAN STOP THE UNIVERSAL CHAMPION?" then
+                v.Parent.Parent.Name = "Quest_5"
+            elseif v.Value == "You know, I heard there's a floating platform above Korin's Tower" then
+                v.Parent.Parent.Name = "Quest_6"
+            elseif v.Value == "I'm interested in joining the ranked matches at the tournament arena!" then
+                v.Parent.Parent.Name = "Quest_7"
+            elseif v.Value == "I have a packge for Master Roshi" then
+                v.Parent.Parent.Name = "Quest_8"
+            end;
+        end
+    end
+    
+    
+   function quest_remotes(x,y,z,v,d)
+        chat({x,y,z,y},4)
+        
+        if d == nil then
+            if skipped == false then 
+            task.wait(0.9)
+            
+            elseif skipped == true then 
+                
+            end
+        print("aughh")
+        chat({v},1)
+        end
+   end
+   
+    if GetLvl() < 50 then
+         while true do 
+    quest_remotes('Quest_1','k','Yes','NamekianShip')
+    wait()
+    if skipped == true then 
+        skipped = false
+        break
+        end
+    if not game.Players.LocalPlayer.PlayerGui.HUD.FullSize.Quests:FindFirstChild("Copy") then
+        break
+    elseif game.Players.LocalPlayer.PlayerGui.HUD.FullSize.Quests:FindFirstChild("Copy") then 
+        for i,v in pairs(game.Players.LocalPlayer.PlayerGui.HUD.FullSize.Quests:GetChildren()) do 
+            if v.Name == "Copy" then 
+                if v:FindFirstChild("Cross") then 
+                    if v.Cross.Visible == true then 
+                        chat({"Chichi","k","k","Sure"},4)
+                        end
+                    end
+                end
+            
+            end
+        end
+    end
+        end
+   
+    
+  if GetLvl() < 50 then
+        while true do
+     quest_remotes('Quest_2','k','Yes','TimeMachine')
+     wait(.1)
+     if skipped == true then 
+        skipped = false
+        break
+        end
+    if not game.Players.LocalPlayer.PlayerGui.HUD.FullSize.Quests:FindFirstChild("Copy") then
+        break
+    elseif game.Players.LocalPlayer.PlayerGui.HUD.FullSize.Quests:FindFirstChild("Copy") then 
+        for i,v in pairs(game.Players.LocalPlayer.PlayerGui.HUD.FullSize.Quests:GetChildren()) do 
+            if v.Name == "Copy" then 
+                if v:FindFirstChild("Cross") then 
+                    if v.Cross.Visible == true then 
+                        chat({"Chichi","k","k","Sure"},4)
+                        
+                    end
+                end
+            
+            end
+        end
+        end
+    end
+        
+    end
+    
+    if GetLvl() < 50 then
+        while true do
+     quest_remotes('Quest_3','k','Yes','SpaceShip')
+     wait(.1)
+     if skipped == true then 
+        skipped = false
+        break
+        end
+    if not game.Players.LocalPlayer.PlayerGui.HUD.FullSize.Quests:FindFirstChild("Copy") then
+        break
+    elseif game.Players.LocalPlayer.PlayerGui.HUD.FullSize.Quests:FindFirstChild("Copy") then 
+        for i,v in pairs(game.Players.LocalPlayer.PlayerGui.HUD.FullSize.Quests:GetChildren()) do 
+            if v.Name == "Copy" then 
+                if v:FindFirstChild("Cross") then 
+                    if v.Cross.Visible == true then 
+                        chat({"Chichi","k","k","Sure"},4)
+                        end
+                    end
+                end
+            
+            end
+        end
+     end
+        end
+        
+     
+     
+    
+         
+         
+ 
+    
+    
+ if GetLvl() < 50 then
+      while true do
+      wait(0.5)
+    print("Elder")
+    chat({"Elder Kai","k","Yes"},3)
+    wait(0.5)
+    game.Players.LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({'k'})
+    
+     wait(.1)
+      
+    local currency = game.Players.LocalPlayer.PlayerGui.HUD.FullSize.Money.Text
+    local num = string.match(currency, '%d[%d.,]*')
+    num = num:gsub(",","")
+    num = tonumber(num)
+    if num < 4000 then 
+        break
+    end
+    end
+      
+      
+    end
+
+      
+        
+   
+
+
+    
+    
+
+ 
+ 
+     
+ 
+  
+    
+        
+        
+    
+if GetLvl() < 50 then   
+task.wait(.5)
+wait(0.5)
+  
+	
+game.Players.LocalPlayer.Backpack.ServerTraits.ChatStart:FireServer(game:GetService("Workspace").FriendlyNPCs["Korin"].Chat.Chat) --crazy stuff here
+task.wait(0.35)
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"k"})
+task.wait(0.35)
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"DRINK"})
+task.wait(0.35)
+game:GetService("Players").LocalPlayer.Backpack.ServerTraits.ChatAdvance:FireServer({"DRINK"})
+
+wait(5)
+    
+end
+
+end    
+local waitforchangeinlvl = function()
+    local nut = true 
+    local lvltxt
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do 
+                if v.Name:find("Lvl") and v:IsA("Model") then 
+                    lvltxt = v.Name
+                    break
+                end
+                end
+                
+    while nut == true do wait()
+    local dn 
+     for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do 
+                if v.Name:find("Lvl") and v:IsA("Model") then 
+                    dn = v.Name
+                    
+                    break
+                end
+     end
+            if dn ~= lvltxt and dn ~= nil then 
+                nut = false
+                end
+    end
+    end
+--[[ Exploit Perform ]]--
+game:GetService("RunService").Stepped:Connect(function()
+if game.Players.LocalPlayer.PlayerGui.HUD.Bottom.ChatGui.TextLabel.Text:find("Popo") and Checkslot() == "Namek" then
+Stopped = true
+print("Wiping")
+end
+if Checkslot() == "Namek" then 
+    local coomies = tonumber(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Bottom.Stats.StatPoints.Val.Text)
+    if coomies > 70 then 
+        Stopped = true
+        end
+end
+if Run == true then 
+Dleta = os.clock() - Time
+    if Dleta > 1 then 
+        Run = false
+    end
+    pcall(function()
+        if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Booster") then 
+            Kami()
+            print("Kami")
+            end
+    end)
+end    
+end)
+--[[ Script ]]--
+
+coroutine.wrap(function()
+    while wait(.1) do
+        pcall(function()
+        if not game.Players.LocalPlayer.PlayerGui:FindFirstChild("HUD") then 
+            wait(4)
+        if not game.Players.LocalPlayer.PlayerGui:FindFirstChild("HUD") then
+            game:Shutdown()
+            end
+        end
+        end)
+    end
+ end)()
+ 
+coroutine.wrap(function()
+    game:WaitForChild("CoreGui")
+    game.CoreGui:WaitForChild("RobloxPromptGui")
+    game.CoreGui.RobloxPromptGui:WaitForChild("promptOverlay")
+    _G.xd = true 
+    while _G.xd do wait()
+        if game:GetService("CoreGui").RobloxPromptGui.promptOverlay:FindFirstChild("ErrorPrompt") then 
+            wait(1) game:GetService("TeleportService"):Teleport(536102540, game.Players.LocalPlayer)
+        end
+    end
+end)()
+if game.PlaceId == 536102540 then 
+ 
+
+for i,v in pairs(game.Players:GetChildren()) do 
+    if v.Name ~= game.Players.LocalPlayer.Name then 
+        print("Attempted to Shutdown")
+        game:Shutdown()
+        print("Shutdown")
+        while wait(5) do 
+             
+            
+            end
+        end
+    
+    
+end
+
+while Stopped == false do wait(2)
+pcall(function()
+    
+if Checkslot() == "Namek" then 
+    local loaf = true
+    coroutine.wrap(function()
+    wait(20)
+    if loaf == true then 
+    game:Shutdown()
+
+    end
+    end)()
+    while loaf == true do wait()
+        pcall(function()
+            for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do 
+                if v.Name:find("Lvl") and v:IsA("Model") then 
+                    loaf = false
+                    break
+                    end
+                end
+            
+            end) 
+        
+        end
+    if GetLvl() >= 50 then
+             
+            --[[ Hack! ]]--
+            Load()
+            wait(1)
+            Changeslot2(SlotPoint)
+            wait(0.3)
+            --PerformExploit()
+            --Hackker()
+            Kami()
+            coroutine.wrap(function()
+                local funnitime = os.clock()
+                local safefromreset = false
+                local dothis = true
+                while dothis == true do wait() 
+                    local deltatime = os.clock() - funnitime
+                    if deltatime > 90 then 
+                        dothis = false
+                    end
+                    pcall(function()
+                        if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Booster") then 
+                        safefromreset = true
+                        dothis = false
+                        end
+                        end)
+                    
+                end
+                if safefromreset == false and Stopped == false then 
+                    
+                    game:Shutdown()
+                    wait(10)
+                    end
+                end)()
+            Waitforchar()
+            
+            else
+            --[[ Get Level 50 ]]--
+           
+            GetLvl50()
+            
+            end
+    else
+        Load()
+        pcall(function()
+        game.Players.LocalPlayer.PlayerGui.HUD.Bottom.Stats.Visible = true 
+        end)
+        Changeslot(SlotNamek)
+        Waitforchar()
+end
+end)
+end
+
+while wait(5) do
+    Load()
+if Checkslot() == "Namek" then 
+    Resetslot()
+    else
+    Changeslot(SlotNamek)
+    Waitforchar()
+    end
+end
+elseif game.PlaceId == 552500546 then 
+    local loading = true
+    while loading == true  do wait()
+    pcall(function()
+        if game.Players.LocalPlayer.PlayerGui.Setup.Frame.Side.Race.Visible == true then 
+            loading = false
+            end
+        end)
+    
+    
+    end
+    WaitForRequestedAsset("ImageLabel",game:GetService("Players").LocalPlayer.PlayerGui.Setup.Frame.Side.Race.Up)
+    WaitForRequestedAsset("i",game.Players.LocalPlayer.Character) 
+      args = {
+                [1] = game:GetService("Players").LocalPlayer.PlayerGui.Setup.Frame.Side.Race,
+                [2] = "up"
+            }
+            
+            game:GetService("Players").LocalPlayer.Backpack.Scripter.RemoteEvent:FireServer(unpack(args))
+        
+                
+    
+    wait(1)
+            local args = {
+            [1] = "woah"
+        }
+        
+        game:GetService("Players").LocalPlayer.Backpack.Scripter.RemoteEvent:FireServer(unpack(args))
+
+end
