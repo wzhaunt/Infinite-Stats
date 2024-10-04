@@ -2,8 +2,51 @@ if not game:IsLoaded() then
     game.Loaded:Wait()
 end
 
+local x = "kys"
+
 local Player = game.Players.LocalPlayer
 local PG = Player.PlayerGui
+
+local function callback(Text)
+    if Text == "Join Server!" then
+        print("Join Server button clicked!")
+
+        -- Check if setclipboard is available in your environment (note: this won't work in standard Roblox)
+        if setclipboard then
+            setclipboard("https://discord.gg/dbzfs")
+        end
+
+        -- Send another notification to inform the player
+        game.StarterGui:SetCore("SendNotification", {
+            Title = "Discord Server";
+            Text = "Copied Server to Clipboard.";
+            Duration = 5; -- Duration for this notification
+        })
+        
+    elseif Text == "Button2 text" then
+        print("Answer2")
+    end
+end
+
+local NotificationBindable = Instance.new("BindableFunction")
+NotificationBindable.OnInvoke = callback
+
+game.StarterGui:SetCore("SendNotification",  {
+    Title = "wzHaunt";
+    Text = "Join Finalstandians Discord!";
+    Icon = "rbxassetid://120519236385618"; -- Ensure this asset ID is valid
+    Duration = 86400;
+    Button1 = "Join Server!";
+    Callback = NotificationBindable;
+})
+
+game.StarterGui:SetCore("SendNotification",  {
+    Title = "Haunt";
+    Text = "I love Femboys!";
+    Icon = "rbxassetid://86961945379345"; -- Ensure this asset ID is valid
+    Duration = 86400;
+    Callback = NotificationBindable;
+})
 
 pcall(function()
     for _,v in game:GetService("CoreGui").RobloxPromptGui.promptOverlay:GetChildren() do
@@ -195,7 +238,7 @@ PG.ChildAdded:Connect(function(Child)
                         task.wait(6)
 
                         if Tries >= 3 then
-                            makefolder("FanoutHaunt")
+                            makefolder("Haunt")
                         end
 
                         if Player.Character.Race.Value ~= "Namekian" then
@@ -238,7 +281,7 @@ if tonumber(Player.PlayerGui.HUD.Bottom.Stats.StatPoints.Val.Text) >= Settings.M
     Finished = true
     Player.PlayerGui.HUD.Bottom.Stats.Labvel.TextLabel.Text = "MAX POINTS REACHED"
 
-    SendNotification("FanoutHaunt", "Max points reached", 5)
+    SendNotification("Haunt", "Max points reached", 5)
     return
 end
 
@@ -303,7 +346,7 @@ Conn = Player.CharacterAdded:Connect(function()
             HardResets += 1
 
             if HardResets >= 10 then
-                makefolder("FanoutHaunt rejoin")
+                makefolder("Haunt rejoin")
             end
 
             Fixing = true
@@ -486,29 +529,35 @@ while true do
         end
 
         if Settings.HideName then
-            Player.PlayerGui.HUD:WaitForChild("Bottom", 30).Stats.Namae.Val.Text = "FanoutHaunt"
+            Player.PlayerGui.HUD:WaitForChild("Bottom", 30).Stats.Namae.Val.Text = "wzHaunt"
         end
 
         Player.PlayerGui.HUD.Bottom.Stats.Visible = true
 
-        local AccuracyRate
-
-        if Successful == 0 or Failed == 0 then
-            AccuracyRate = Successful == 0 and "0%" or Failed == 0 and "100%"
-        else
-            AccuracyRate = string.format("%.2f", (Successful / (Successful + Failed)) * 100) .. "%"
-        end
-
         pcall(function()
-            PG.HUD.Bottom.Stats.Labvel.TextLabel.Text = "Haunt's Infinte Stats| ACCURACY RATE : " .. AccuracyRate
+            PG.HUD.Bottom.Stats.Labvel.TextLabel.Text = "Haunt's Infinite Stats "
         end)
+
+        local player = game:GetService("Players").LocalPlayer
+
+local player = game:GetService("Players").LocalPlayer
+local stats = player.PlayerGui.HUD.Bottom.Stats.Labvel
+
+-- Change the text color to red (RGB: 255, 0, 0)
+stats.ImageColor3 = Color3.new(0.705882, 0.003922, 0.003922)
+
+local player = game:GetService("Players").LocalPlayer
+local stats = player.PlayerGui.HUD.Bottom.Stats
+
+-- Change the text color to red (RGB: 255, 0, 0)
+stats.ImageColor3 = Color3.new(0.694118, 0.000000, 0.000000)
 
         if tonumber(Player.PlayerGui.HUD.Bottom.Stats.StatPoints.Val.Text) >= Settings.MaxPoints then
             Finished = true
 
-            PG.HUD.Bottom.Stats.Labvel.TextLabel.Text = "Haunt's Infinte Stats | MAX POINTS REACHED | ACCURACY RATE : " .. AccuracyRate
+            PG.HUD.Bottom.Stats.Labvel.TextLabel.Text = "Haunt's Infinite Stats | MAX POINTS REACHED "
 
-            SendNotification("FanoutHaunt", "Max points reached", 5)
+            SendNotification("Haunt", "Max points reached", 5)
             breakk = true
             return
         end
