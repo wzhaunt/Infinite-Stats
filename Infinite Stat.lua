@@ -463,8 +463,6 @@ while true do
         Talk("Character Slot Changer", {"Yes", "k", Settings.PointSlot}, Settings.WaitTimeSlotChange, {"Change Character Slots?", "Alright", "Which slot would you like to play in?", "Loading!"}, true)
     end)
 
-    task.wait(Settings.KamiChatDelay)
-
     if not Player.Backpack:FindFirstChild("ServerTraits") then
         pcall(function()
             Player.Backpack:WaitForChild("ServerTraits", 30)
