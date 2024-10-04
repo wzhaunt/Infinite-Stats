@@ -269,14 +269,6 @@ if Player.PlayerGui.HUD.Bottom.Stats.StatPoints.Val.Text == "76" then
     Talk("Start New Game [Redo Character]", {"Yes", "k", "Yes"}, 0.6, nil, false)
 end
 
-if tonumber(Player.PlayerGui.HUD.Bottom.Stats.StatPoints.Val.Text) >= Settings.MaxPoints then
-    Finished = true
-    Player.PlayerGui.HUD.Bottom.Stats.Labvel.TextLabel.Text = "MAX POINTS REACHED"
-
-    SendNotification("Haunt", "Max points reached", 5)
-    return
-end
-
 if tonumber(Player.PlayerGui.HUD.Bottom.Stats.LVL.Val.Text) < 44 then
     Talk("Bulma", {"k", "Yes", "k"} , Settings.WaitTimeTalk, nil, false)
     task.wait(0.8)
