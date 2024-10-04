@@ -259,12 +259,6 @@ PG.ChildAdded:Connect(function(Child)
     end
 end)
 
-if not Settings.IsPointSlotANamekian and Player.Character.Race.Value ~= "Namekian" then
-    Talk("Character Slot Changer", {"Yes", "k", Settings.NamekSlot}, Settings.WaitTimeSlotChange, {"Change Character Slots?", "Alright", "Which slot would you like to play in?", "Loading!"}, true)
-
-    task.wait(6)
-end
-
 if Player.PlayerGui.HUD.Bottom.Stats.StatPoints.Val.Text == "76" then
     if not Settings.IsPointSlotANamekian and Player.Character.Race.Value == "Namekian" then
         Talk("Character Slot Changer", {"Yes", "k", Settings.NamekSlot}, Settings.WaitTimeSlotChange + 0.3, {"Change Character Slots?", "Alright", "Which slot would you like to play in?", "Loading!"}, true)
