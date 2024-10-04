@@ -95,8 +95,6 @@ Player.Idled:Connect(function()
     game:GetService("VirtualUser"):ClickButton2(Vector2.new())
 end)
 
-task.wait(1 + Settings.ExtraTime)
-
 if game.PlaceId == 552500546 then
     task.wait(1)
     repeat
